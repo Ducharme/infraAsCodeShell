@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Specific values for that build
+SRC_SOURCECODE_REPO_NAME=redisPerformanceAnalyticsPy
+DST_SOURCECODE_REPO_NAME=$SRC_SOURCECODE_REPO_NAME
+DST_SOURCECODE_REPO_DESC="LaFleet - Redis performance analytics in python3"
+
+CODEBUILD_NAME=$DST_SOURCECODE_REPO_NAME
+BUILD_DESCRIPTION=$DST_SOURCECODE_REPO_DESC
+IMAGE_REPO_NAME_VALUE=redisearch-performance-analytics-py
+CODEBUILD_BRANCH_NAME=main

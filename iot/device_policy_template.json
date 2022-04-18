@@ -1,0 +1,25 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iot:Publish",
+        "iot:Receive",
+        "iot:Subscribe"
+      ],
+      "Resource": [
+        "arn:aws:iot:AWS_REGION_VALUE:AWS_ACCOUNT_ID_VALUE:topic/THING_TOPIC"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iot:Connect"
+      ],
+      "Resource": [
+        "arn:aws:iot:AWS_REGION_VALUE:AWS_ACCOUNT_ID_VALUE:client/*"
+      ]
+    }
+  ]
+}

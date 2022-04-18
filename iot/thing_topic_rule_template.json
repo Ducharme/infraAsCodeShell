@@ -1,0 +1,27 @@
+{
+    "sql": "SELECT deviceId, ts as timestamp, fv as firmwareVersion, batt as battery, gps.lat as gps_lat, gps.lng as gps_lng, gps.alt as gps_alt, seq, timestamp() as server_timestamp, topic() as topic FROM 'THING_TOPIC'",
+    "description": "LaFleet - Sends messages to SQS from GPS devices",
+    "ruleDisabled": false,
+    "awsIotSqlVersion": "2016-03-23",
+    "actions": [
+        {
+            "sqs": {
+                "queueUrl": "SQS_QUEUE_URL",
+                "roleArn": "SQS_IAM_ROLE_ARN",
+                "useBase64": false
+            }
+        },
+        {
+            "cloudwatchLogs": {
+                "roleArn": "CW_IOT_DEVICE_LOGS_IAM_ROLE_ARN",
+                "logGroupName": "CW_IOT_DEVICE_LOGS_LOG_GROUP"
+            }
+        }
+    ],
+    "errorAction": {
+        "cloudwatchLogs": {
+            "roleArn": "CW_IOT_DEVICE_ERROR_IAM_ROLE_ARN",
+            "logGroupName": "CW_IOT_DEVICE_ERROR_LOG_GROUP"
+        }
+    }
+}

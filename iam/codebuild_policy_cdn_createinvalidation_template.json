@@ -1,0 +1,13 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "cloudfront:CreateInvalidation"
+            ],
+            "Resource": "arn:aws:cloudfront::AWS_ACCOUNT_ID_VALUE:distribution/CDN_DIST_ID"
+        }
+    ]
+}

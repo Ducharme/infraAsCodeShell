@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:DescribeLogStreams",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:AWS_REGION_VALUE:AWS_ACCOUNT_ID_VALUE:log-group:LOG_GROUP:*"
+            ]
+        }
+    ]
+}

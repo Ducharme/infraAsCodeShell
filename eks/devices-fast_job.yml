@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: lafleet-devices-fast
+  namespace: default
+  labels:
+    app: devices
+    project: lafleet
+    speed: fast
+spec:
+  parallelism: 1
+  completions: 1
+  template:
+    metadata:
+      name: devices
+      labels:
+        app: mockIotGpsDeviceAwsSdkV2
+    spec:
+      containers:
+      - name: mock-iot-gps-device-awsskdv2
+        image: <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com/mock-iot-gps-device-awsskdv2:latest
+        imagePullPolicy: Always
+        env:
+        - name: ENDPOINT
+          value: "<endopint>-ats.iot.<aws_region>.amazonaws.com"
+        - name: TOPIC
+          value: "topic_1"
+        - name: INTERVAL
+          value: "1000"
+        - name: COUNT
+          value: "200"
+        - name: CA_FILE
+          value: "./certs/root-ca.crt"
+        - name: CERT_FILE
+          value: "./certs/certificate.pem.crt"
+        - name: KEY_FILE
+          value: "./certs/private.pem.key"
+        resources:
+          limits:
+            memory: "60Mi"
+            cpu: "80m"
+          requests:
+            memory: "30Mi"
+            cpu: "40m"
+      restartPolicy: "OnFailure"
+      nodeSelector:
+        nodegroup-type: backend-standard

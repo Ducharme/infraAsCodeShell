@@ -1,0 +1,129 @@
+{
+    "CallerReference": "lafleet-react-web",
+    "DefaultRootObject": "index.html",
+    "Origins": {
+        "Quantity": 1,
+        "Items": [
+            {
+                "Id": "CDN_CALLER_REFERENCE",
+                "DomainName": "CDN_CALLER_REFERENCE",
+                "S3OriginConfig": {
+                    "OriginAccessIdentity": "CDN_ORIGIN_ACCESS_IDENTITY"
+                },
+                "ConnectionAttempts": 3,
+                "ConnectionTimeout": 10,
+                "OriginShield": {
+                    "Enabled": true,
+                    "OriginShieldRegion": "AWS_REGION_VALUE"
+                }
+            }
+        ]
+    },
+    "DefaultCacheBehavior": {
+        "TargetOriginId": "CDN_CALLER_REFERENCE",
+        "ViewerProtocolPolicy": "redirect-to-https",
+        "AllowedMethods": {
+            "Quantity": 2,
+            "Items": [
+                "HEAD",
+                "GET"
+            ],
+            "CachedMethods": {
+                "Quantity": 2,
+                "Items": [
+                    "HEAD",
+                    "GET"
+                ]
+            }
+        },
+        "Compress": true,
+        "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6"
+    },
+    "CustomErrorResponses": {
+        "Quantity": 11,
+        "Items": [
+            {
+                "ErrorCode": 400,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "400",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 403,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "403",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 404,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "404",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 405,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "405",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 414,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "414",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 416,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "416",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 500,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "500",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 501,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "501",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 502,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "502",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 503,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "503",
+                "ErrorCachingMinTTL": 300
+            },
+            {
+                "ErrorCode": 504,
+                "ResponsePagePath": "/error.html",
+                "ResponseCode": "504",
+                "ErrorCachingMinTTL": 300
+            }
+        ]
+    },
+    "Comment": "LaFleet React Website",
+    "PriceClass": "PriceClass_All",
+    "Enabled": true,
+    "ViewerCertificate": {
+        "CloudFrontDefaultCertificate": true,
+        "MinimumProtocolVersion": "TLSv1.2_2021",
+        "CertificateSource": "cloudfront"
+    },
+    "Restrictions": {
+        "GeoRestriction": {
+            "RestrictionType": "none",
+            "Quantity": 0
+        }
+    },
+    "HttpVersion": "http2",
+    "IsIPV6Enabled": true
+}

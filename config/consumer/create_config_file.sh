@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ENV_PROD_FILENAME=".env.production"
+TEMPLATE_CFG=."/config/consumer/$ENV_PROD_FILENAME"_template
+VALUES_CFG="./config/consumer/$ENV_PROD_FILENAME"-values
+cp $TEMPLATE_CFG $VALUES_CFG
+
+sed -i 's@AWS_REGION_VALUE@'"$AWS_REGION_VALUE"'@g' $VALUES_CFG
+sed -i 's@SQS_QUEUE_URL_VALUE@'"$SQS_QUEUE_URL"'@g' $VALUES_CFG
+
+aws s3 cp $VALUES_CFG s3://$S3_OBJECT_STORE/config/$DST_SOURCECODE_REPO_NAME/$ENV_PROD_FILENAME

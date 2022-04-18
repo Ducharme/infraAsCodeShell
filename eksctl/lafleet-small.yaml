@@ -1,0 +1,62 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: lafleet-cluster
+  region: ap-southeast-1
+  version: "1.21"
+
+availabilityZones: ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
+
+vpc:
+  nat:
+    gateway: Single
+  clusterEndpoints:
+    publicAccess: true # risky??
+    privateAccess: true
+
+iam:
+  withOIDC: true
+  serviceAccounts:
+  - metadata:
+      name: lafleet-eks-sa-sqsconsumer
+      labels: {aws-usage: "application"}
+    attachPolicy:
+      Version: "2012-10-17"
+      Statement:
+      - Effect: Allow
+        Action:
+        - "sqs:ReceiveMessage"
+        Resource: '*'
+      - Effect: Allow
+        Action:
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:DescribeLogStreams"
+        - "logs:PutLogEvents"
+        Resource: '*'
+
+
+managedNodeGroups:
+- name: ng-compute-x64
+  instanceType: t3.medium
+  instancePrefix: lf-t3
+  minSize: 1
+  desiredCapacity: 1
+  maxSize: 2
+  volumeSize: 20
+  volumeType: gp2
+  maxPodsPerNode: 30
+  privateNetworking: true
+  updateConfig:
+    maxUnavailable: 1
+  iam:
+    withAddonPolicies:
+      externalDNS: true
+      certManager: true
+
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: [ "*"]
+    logRetentionInDays: 30

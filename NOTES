@@ -1,0 +1,7 @@
+name: infra-as-code-shell
+version: 0.0.1
+description": LaFleet - Infra as Code (shell)
+homepage: https://github.com/Ducharme/infra-as-code-shell
+keywords: aws, iot, lafleet
+author: Claude Ducharme
+license: MIT

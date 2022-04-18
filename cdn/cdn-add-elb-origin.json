@@ -1,0 +1,27 @@
+
+{
+    "Id": "ELB_DNS_NAME",
+    "DomainName": "ELB_DNS_NAME",
+    "OriginPath": "",
+    "CustomHeaders": {
+        "Quantity": 0
+    },
+    "CustomOriginConfig": {
+        "HTTPPort": 80,
+        "HTTPSPort": 443,
+        "OriginProtocolPolicy": "http-only",
+        "OriginSslProtocols": {
+            "Quantity": 1,
+            "Items": [
+                "TLSv1.2"
+            ]
+        },
+        "OriginReadTimeout": 30,
+        "OriginKeepaliveTimeout": 5
+    },
+    "ConnectionAttempts": 3,
+    "ConnectionTimeout": 10,
+    "OriginShield": {
+        "Enabled": false
+    }
+}

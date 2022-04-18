@@ -1,0 +1,77 @@
+{
+    "name": "CODEBUILD_NAME",
+    "description": "BUILD_DESCRIPTION",
+    "source": {
+        "type": "CODECOMMIT",
+        "location": "SOURCE_LOCATION",
+        "gitCloneDepth": 1,
+        "gitSubmodulesConfig": {
+            "fetchSubmodules": false
+        },
+        "insecureSsl": false
+    },
+    "sourceVersion": "CODEBUILD_BRANCH_NAME",
+    "artifacts": {
+        "type": "S3",
+        "location": "CODEBUILD_ARTIFACT",
+        "path": "CODEBUILD_NAME",
+        "namespaceType": "NONE",
+        "name": "CODEBUILD_NAME",
+        "packaging": "ZIP",
+        "overrideArtifactName": true,
+        "encryptionDisabled": false
+    },
+    "cache": {
+        "type": "NO_CACHE"
+    },
+    "environment": {
+        "type": "LINUX_CONTAINER",
+        "image": "aws/codebuild/standard:5.0-21.03.09",
+        "computeType": "BUILD_GENERAL1_SMALL",
+        "environmentVariables": [
+            {
+                "name": "AWS_DEFAULT_REGION",
+                "value": "AWS_REGION_VALUE",
+                "type": "PLAINTEXT"
+            },
+            {
+                "name": "AWS_ACCOUNT_ID",
+                "value": "AWS_ACCOUNT_ID_VALUE",
+                "type": "PLAINTEXT"
+            },
+            {
+                "name": "IMAGE_REPO_NAME",
+                "value": "IMAGE_REPO_NAME_VALUE",
+                "type": "PLAINTEXT"
+            },
+            {
+                "name": "IMAGE_TAG",
+                "value": "latest",
+                "type": "PLAINTEXT"
+            },
+            {
+                "name": "S3_OBJECT_STORE",
+                "value": "S3_OBJECT_STORE_VALUE",
+                "type": "PLAINTEXT"
+            }
+        ],
+        "privilegedMode": true,
+        "imagePullCredentialsType": "CODEBUILD"
+    },
+    "serviceRole": "IAM_ROLE_ARN",
+    "timeoutInMinutes": 15,
+    "queuedTimeoutInMinutes": 30,
+    "encryptionKey": "ENCRYPTION_KEY_VALUE",
+    "logsConfig": {
+        "cloudWatchLogs": {
+            "status": "ENABLED",
+            "groupName": "/PROJECT_NAME/codebuild/CODEBUILD_NAME",
+            "streamName": "build"
+        },
+        "s3Logs": {
+            "status": "DISABLED",
+            "encryptionDisabled": false
+        }
+    },
+    "concurrentBuildLimit": 5
+}

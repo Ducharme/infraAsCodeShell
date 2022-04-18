@@ -1,0 +1,4 @@
+{
+  "ThingName" : "THING_NAME",
+  "AWS::IoT::Certificate::Id" : "THING_CERTIFICATE_ID"
+}

@@ -1,0 +1,8 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Effect": "Allow",
+        "Action": "sqs:SendMessage",
+        "Resource": "arn:aws:sqs:AWS_REGION_VALUE:AWS_ACCOUNT_ID_VALUE:SQS_QUEUE_NAME"
+    }
+}

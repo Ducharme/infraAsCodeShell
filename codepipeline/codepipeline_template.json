@@ -1,0 +1,100 @@
+{
+    "pipeline": {
+          "name": "CODEPIPELINE_NAME",
+          "roleArn": "CODEPIPELINE_ARN",
+          "version": 2,
+          "artifactStore": {
+              "type": "S3",
+              "location": "CODEPIPELINE_ARTIFACT"
+          },
+          "stages": [
+              {
+                  "name": "Source",
+                  "actions": [
+                      {
+                          "name": "Source",
+                          "actionTypeId": {
+                              "category": "Source",
+                              "owner": "AWS",
+                              "provider": "CodeCommit",
+                              "version": "1"
+                          },
+                          "runOrder": 1,
+                          "configuration": {
+                              "BranchName": "CODEBUILD_BRANCH_NAME",
+                              "OutputArtifactFormat": "CODE_ZIP",
+                              "PollForSourceChanges": "false",
+                              "RepositoryName": "CODEPIPELINE_REPOSITORY_NAME"
+                          },
+                          "outputArtifacts": [
+                              {
+                                  "name": "SourceArtifact"
+                              }
+                          ],
+                          "inputArtifacts": [],
+                          "region": "AWS_REGION_VALUE",
+                          "namespace": "SourceVariables"
+                      }
+                  ]
+              },
+              {
+                  "name": "Build",
+                  "actions": [
+                      {
+                          "name": "Build",
+                          "actionTypeId": {
+                              "category": "Build",
+                              "owner": "AWS",
+                              "provider": "CodeBuild",
+                              "version": "1"
+                          },
+                          "runOrder": 1,
+                          "configuration": {
+                              "ProjectName": "CODEPIPELINE_PROJECT_NAME"
+                          },
+                          "outputArtifacts": [
+                              {
+                                  "name": "BuildArtifact"
+                              }
+                          ],
+                          "inputArtifacts": [
+                              {
+                                  "name": "SourceArtifact"
+                              }
+                          ],
+                          "region": "AWS_REGION_VALUE",
+                          "namespace": "BuildVariables"
+                      }
+                  ]
+              },
+              {
+                  "name": "Deploy",
+                  "actions": [
+                      {
+                          "name": "Deploy",
+                          "actionTypeId": {
+                              "category": "Deploy",
+                              "owner": "AWS",
+                              "provider": "S3",
+                              "version": "1"
+                          },
+                          "runOrder": 1,
+                          "configuration": {
+                              "BucketName": "CODEPIPELINE_ARTIFACT",
+                              "Extract": "false",
+                              "ObjectKey": "CODEPIPELINE_OBJECT_KEY"
+                          },
+                          "outputArtifacts": [],
+                          "inputArtifacts": [
+                              {
+                                  "name": "BuildArtifact"
+                              }
+                          ],
+                          "region": "AWS_REGION_VALUE",
+                          "namespace": "DeployVariables"
+                      }
+                  ]
+              }
+          ]
+      }
+  }

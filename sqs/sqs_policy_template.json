@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Id": "SQS_POLICY_ID",
+  "Statement": [
+    {
+      "Sid": "SameAccountAccess",
+      "Effect": "Allow",
+      "Principal": { "AWS": "*" },
+      "Action": "SQS:*",
+      "Resource": "SQS_RESOURCE"
+    }
+  ]
+}
