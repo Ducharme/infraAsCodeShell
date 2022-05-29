@@ -74,7 +74,7 @@ sh ./main_create.sh
 > Create CodeCommit repository mockIotGpsDeviceAwsSdkV2
 
 ./ecr/create_repository.sh # No dependency
-> Create ECR repository mock-iot-gps-device-awsskdv2 for docker images
+> Create ECR repository mock-iot-gps-device-awssdkv2 for docker images
 
 ./logs/create_codebuild_log_group.sh
 > Create Log Group /lafleet/codebuild/mockIotGpsDeviceAwsSdkV2

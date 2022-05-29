@@ -19,8 +19,8 @@ spec:
         app: devices
     spec:
       containers:
-      - name: mock-iot-gps-device-awsskdv2
-        image: <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com/mock-iot-gps-device-awsskdv2:latest
+      - name: mock-iot-gps-device-awssdkv2
+        image: <aws_account_id>.dkr.ecr.<aws_region>.amazonaws.com/mock-iot-gps-device-awssdkv2:latest
         env:
         - name: ENDPOINT
           value: "<endpoint>-ats.iot.<aws_region>.amazonaws.com"

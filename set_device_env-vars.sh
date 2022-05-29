@@ -8,7 +8,7 @@ DST_SOURCECODE_REPO_DESC="LaFleet - Emulated IoT GPS Device based on aws-iot-dev
 CODEBUILD_NAME=$DST_SOURCECODE_REPO_NAME
 BUILD_DESCRIPTION=$DST_SOURCECODE_REPO_DESC
 # Suffix _VALUE is required for one sed in a json
-IMAGE_REPO_NAME_VALUE=mock-iot-gps-device-awsskdv2
+IMAGE_REPO_NAME_VALUE=mock-iot-gps-device-awssdkv2
 CODEBUILD_BRANCH_NAME=main
 
 

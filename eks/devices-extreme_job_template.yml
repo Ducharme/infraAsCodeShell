@@ -17,7 +17,7 @@ spec:
         app: devices
     spec:
       containers:
-      - name: mock-iot-gps-device-awsskdv2
+      - name: mock-iot-gps-device-awssdkv2
         image: IMAGE_VALUE
         env:
         - name: ENDPOINT
