@@ -17,8 +17,6 @@ echo "Common >> Calling ./set_common_env-vars.sh"
 if [ "$CREATE_APPS" = "TRUE" ]; then
   echo "Calling ./eks/deploy_apps.sh"
   . ./eks/deploy_apps.sh
-  echo "Calling ./cdn/add_elb.sh"
-  . ./cdn/add_elb.sh
 fi
 
 

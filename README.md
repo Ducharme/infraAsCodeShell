@@ -211,11 +211,30 @@ When ready, launch mock decices with
 ```
 kubectl apply -f ./eks/devices-extreme_job.yml
 ```
-For 2 minutes 30 seconds tehre will be 20 devices updating value at 10 ms interval.
+For 2 minutes 30 seconds there will be 20 devices updating value at 10 ms interval.
 
 
 # Resources created by the scripts
 
+
+IoT Core (Thing, Security/Policy, Rules)
+SQS (1x)
+S3 buckets (4x)
+CloudFront Distribution & OAI
+CloudWatch Log Groups
+IAM/roles (13x)
+IAM/policies (13x)
+CodeCommit (5x)
+CodeBuild (5x)
+CodePipeline (5x)
+ECR (4x)
+EC2/Instances
+EC2/LoadBalancer
+EC2/Auto Scaling Groups
+VPC/NAT gateways
+EKS
+Lambda/Functions
+Lambda/Layers
 
 See [RESOURCES](RESOURCES.md) (work in progress)
 
