@@ -151,7 +151,7 @@ Remaining:
 ## Known issues
 
 1. delete-thing break command exists the shell (program stops)
-2. Image redis-performance-analitycs-py:latest to be renamed redis-performance-analytics-py:latest
+2. Image redis-performance-analytics-py:latest to be renamed redis-performance-analytics-py:latest
 
 
 # How To Deploy
